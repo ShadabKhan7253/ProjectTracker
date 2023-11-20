@@ -1,0 +1,11 @@
+.project-price {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 5px;
+  /* border: solid 1px #FC6161; */
+  font-size: 14px;
+  font-weight: bold;
+  /* border-bottom-left-radius: 5px;
+  border-top-right-radius: 5px; */
+}

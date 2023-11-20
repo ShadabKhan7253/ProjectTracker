@@ -1,0 +1,15 @@
+.brand-logo {
+    max-height: 80px;
+}
+
+.btn-primary {
+    background-color: #FC6161;
+    border: solid 1px #FC6161;
+}
+
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: #FB4B4B!important;
+    border: solid 1px #FB4B4B;
+}
