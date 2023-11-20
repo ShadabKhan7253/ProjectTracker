@@ -1,10 +1,17 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { ProjectCard } from './components/ProjectCard';
+import { NoProject } from './NoProject';
 
-export const ProjectList = ({ projects }) => {
+export const ProjectList = ({ projects, onSidebarShow }) => {
   return (
     <Container className="mt-3">
+      <Row>
+        <Col md={12}>
+          <h2>Projects</h2>
+        </Col>
+        <Col> {projects.length === 0 && <NoProject onSidebarShow={onSidebarShow} />} </Col>
+      </Row>
       <Row>
         {projects.map((project) => (
           <Col md={3} key={project.id}>
