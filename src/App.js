@@ -17,6 +17,11 @@ function App() {
     setIsSidebarVisible(false);
   };
 
+  const handleDeleteProject = (projectId) => {
+    const updateProjects = projects.filter((project) => project.id !== projectId);
+    setProjects(updateProjects);
+  };
+
   return (
     <>
       <Header
@@ -25,7 +30,11 @@ function App() {
         onSidebarClose={handleSidebarClose}
         isSidebarVisible={isSidebarVisible}
       />
-      <ProjectList projects={projects} onSidebarShow={handleSidebarShow} />
+      <ProjectList
+        projects={projects}
+        onSidebarShow={handleSidebarShow}
+        onDeleteProject={handleDeleteProject}
+      />
     </>
   );
 }

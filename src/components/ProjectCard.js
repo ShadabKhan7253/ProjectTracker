@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
 
-export const ProjectCard = ({ id, name, price, description, status }) => {
+export const ProjectCard = ({ id, name, price, description, status, onDeleteProject }) => {
   return (
     <Card border="info">
       <Card.Header>
@@ -29,6 +29,7 @@ export const ProjectCard = ({ id, name, price, description, status }) => {
             className="ms-auto"
             size="sm"
             disabled={status === 'Completed'}
+            onClick={() => onDeleteProject(id)}
           >
             <FontAwesomeIcon icon={faTrash} />
           </Button>

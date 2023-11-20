@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { ProjectCard } from './components/ProjectCard';
 import { NoProject } from './NoProject';
 
-export const ProjectList = ({ projects, onSidebarShow }) => {
+export const ProjectList = ({ projects, onSidebarShow, onDeleteProject }) => {
   return (
     <Container className="mt-3">
       <Row>
@@ -21,6 +21,7 @@ export const ProjectList = ({ projects, onSidebarShow }) => {
               price={project.price}
               description={project.description}
               status={project.status}
+              onDeleteProject={onDeleteProject}
             />
           </Col>
         ))}
