@@ -13,6 +13,8 @@ const AddProject = ({ onAddProject }) => {
       description: projectDescriptionRef.current.value,
       price: pricePerHourRef.current.value,
       status: projectStatusRef.current.value,
+      elapsed: 0,
+      runningSince: null,
     };
     onAddProject(projectDetails);
   };

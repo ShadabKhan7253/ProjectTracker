@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Badge, Card, Stack } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencilSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Button from 'react-bootstrap/Button';
+import { TimerActionButton } from './TimerActionButton';
+import Helper from '../Helper';
 
-export const ProjectCard = ({ id, name, price, description, status, onDeleteProject }) => {
+export const ProjectCard = ({
+  id,
+  name,
+  price,
+  description,
+  status,
+  onDeleteProject,
+  elapsed,
+  runningSince,
+  onStartTimer,
+  onStopTimer,
+}) => {
+  const [counter, setCounter] = useState(0);
+  useEffect(() => {
+    const timerInterval = setInterval(() => setCounter(counter + 1), 250);
+    return () => {
+      clearInterval(timerInterval);
+    };
+  }, [counter]);
   return (
-    <Card border="info">
+    <Card border={status === 'Completed' ? 'success' : 'warning'}>
       <Card.Header>
         <Stack direction="horizontal">
           <h4 className="me-auto">{name} </h4>
@@ -17,7 +37,9 @@ export const ProjectCard = ({ id, name, price, description, status, onDeleteProj
       <Card.Body>
         <Card.Text>
           <span className="d-block">{description}</span>
-          <span className="h2 -block text-center">23:45:12:05</span>
+          <span className="h2 -block text-center text-muted">
+            {Helper.renderElapsedString(elapsed, runningSince)}
+          </span>
         </Card.Text>
 
         <Stack direction="horizontal" gap={3} className="mt-4">
@@ -38,9 +60,16 @@ export const ProjectCard = ({ id, name, price, description, status, onDeleteProj
           </Button>
         </Stack>
         <div className="d-grid mt-2">
-          <Button variant="outline-success" size="sm" disabled={status === 'Completed'}>
+          <TimerActionButton
+            id={id}
+            runningSince={runningSince}
+            onStartTimer={onStartTimer}
+            onStopTimer={onStopTimer}
+            status={status}
+          />
+          {/* <Button variant="outline-success" size="sm" disabled={status === 'Completed'}>
             Start Timer
-          </Button>
+          </Button> */}
         </div>
       </Card.Body>
     </Card>
