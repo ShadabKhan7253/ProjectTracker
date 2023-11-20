@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import { v1 as uuidv4 } from 'uuid';
 import Header from './components/Header';
 import { ProjectList } from './ProjectList';
 
@@ -11,7 +12,7 @@ function App() {
   const handleSidebarShow = () => setIsSidebarVisible(true);
 
   const handleAddProject = (project) => {
-    const projectToBeAdded = project;
+    const projectToBeAdded = { ...project, id: uuidv4() };
     setProjects([...projects, projectToBeAdded]);
     setIsSidebarVisible(false);
   };
