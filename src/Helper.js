@@ -1,5 +1,7 @@
 const Helpers = (function () {
   function renderElapsedString(elapsed, runningSince) {
+    // console.log('elapsed', elapsed);
+    // console.log('runningSince', runningSince);
     let totalElapsed = elapsed;
     if (runningSince) {
       totalElapsed += Date.now() - runningSince;

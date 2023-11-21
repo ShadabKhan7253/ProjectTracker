@@ -36,8 +36,8 @@ export const ProjectCard = ({
       </Card.Header>
       <Card.Body>
         <Card.Text>
-          <span className="d-block">{description}</span>
-          <span className="h2 -block text-center text-muted">
+          <span className="d-block mb-3">{description}</span>
+          <span className="h2 d-block text-center text-muted">
             {Helper.renderElapsedString(elapsed, runningSince)}
           </span>
         </Card.Text>
