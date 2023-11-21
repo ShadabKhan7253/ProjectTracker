@@ -43,6 +43,7 @@ function App() {
   };
 
   const handleUpdateProject = (projectId, updatedProject) => {
+    // console.log(updatedProject);
     const updatedProjects = projects.map((project) => {
       if (project.id === projectId) {
         return {

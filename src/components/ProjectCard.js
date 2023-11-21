@@ -51,7 +51,7 @@ export const ProjectCard = ({
             variant="outline-danger"
             className="ms-auto"
             size="sm"
-            disabled={status === 'Completed'}
+            disabled={status === 'completed'}
             onClick={() => onDeleteProject(id)}
           >
             <FontAwesomeIcon icon={faTrash} />
@@ -59,7 +59,7 @@ export const ProjectCard = ({
           <Button
             variant="outline-warning"
             size="sm"
-            disabled={status === 'Completed'}
+            disabled={status === 'completed'}
             onClick={() => onEditClick(id)}
           >
             <FontAwesomeIcon icon={faPencilSquare} />
