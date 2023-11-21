@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { ProjectCard } from './components/ProjectCard';
 import { NoProject } from './NoProject';
+import { EditModal } from './components/EditModal';
 
 export const ProjectList = ({
   projects,
@@ -9,7 +10,26 @@ export const ProjectList = ({
   onDeleteProject,
   onStartTimer,
   onStopTimer,
+  onUpdateProject,
 }) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [projectToBeUpdated, setProjectToBeUpdated] = useState(null);
+
+  const handleModalClose = () => setIsModalVisible(false);
+
+  const handleEditProject = (id) => {
+    setIsModalVisible(true);
+    projects.forEach((project) => {
+      if (project.id === id) {
+        setProjectToBeUpdated(project);
+      }
+    });
+  };
+
+  const handleUpdateProject = (id, projectDetails) => {
+    onUpdateProject(id, projectDetails);
+    setIsModalVisible(false);
+  };
   return (
     <Container className="mt-3">
       <Row>
@@ -32,10 +52,17 @@ export const ProjectList = ({
               onStopTimer={onStopTimer}
               elapsed={project.elapsed}
               runningSince={project.runningSince}
+              onEditClick={handleEditProject}
             />
           </Col>
         ))}
       </Row>
+      <EditModal
+        project={projectToBeUpdated}
+        onModalClose={handleModalClose}
+        isModalVisible={isModalVisible}
+        onUpdateProject={handleUpdateProject}
+      />
     </Container>
   );
 };

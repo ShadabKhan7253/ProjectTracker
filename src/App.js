@@ -42,6 +42,21 @@ function App() {
     setIsSidebarVisible(false);
   };
 
+  const handleUpdateProject = (projectId, updatedProject) => {
+    const updatedProjects = projects.map((project) => {
+      if (project.id === projectId) {
+        return {
+          ...updatedProject,
+          elapsed: project.elapsed,
+          runningSince: project.runningSince,
+          id: projectId,
+        };
+      }
+      return project;
+    });
+    setProjects(updatedProjects);
+  };
+
   const handleDeleteProject = (projectId) => {
     const updateProjects = projects.filter((project) => project.id !== projectId);
     setProjects(updateProjects);
@@ -81,6 +96,7 @@ function App() {
         onDeleteProject={handleDeleteProject}
         onStartTimer={handleStartTimer}
         onStopTimer={handleStopTimer}
+        onUpdateProject={handleUpdateProject}
       />
     </>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Offcanvas } from 'react-bootstrap';
-import AddProject from './AddProject';
+import EditableProjectForm from './EditableProjectForm';
 
 const Sidebar = ({ show, handleClose, onAddProject }) => {
   return (
@@ -9,7 +9,7 @@ const Sidebar = ({ show, handleClose, onAddProject }) => {
         <Offcanvas.Title>Add Project</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-        <AddProject onAddProject={onAddProject} />
+        <EditableProjectForm onAddProject={onAddProject} />
       </Offcanvas.Body>
     </Offcanvas>
   );

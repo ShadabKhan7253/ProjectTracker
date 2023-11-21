@@ -1,11 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-const AddProject = ({ onAddProject }) => {
+const EditableProjectForm = ({ project, onAddProject, onUpdateProject }) => {
   const projectNameRef = useRef('');
   const projectDescriptionRef = useRef('');
   const pricePerHourRef = useRef('');
   const projectStatusRef = useRef('Ongoing');
+
+  useEffect(() => {
+    projectNameRef.current.value = project?.name ?? '';
+    projectDescriptionRef.current.value = project?.description ?? '';
+    pricePerHourRef.current.value = project?.price ?? '';
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = () => {
     const projectDetails = {
@@ -14,7 +21,11 @@ const AddProject = ({ onAddProject }) => {
       price: pricePerHourRef.current.value,
       status: projectStatusRef.current.value,
     };
-    onAddProject(projectDetails);
+    if (!project) {
+      onAddProject(projectDetails);
+    } else {
+      onUpdateProject(project.id, projectDetails);
+    }
   };
 
   return (
@@ -43,10 +54,10 @@ const AddProject = ({ onAddProject }) => {
         </Form.Select>
       </Form.Group>
       <Button variant="primary" onClick={handleSubmit}>
-        Add Project
+        {!project ? 'Add Project' : 'Update Project'}
       </Button>
     </Form>
   );
 };
 
-export default AddProject;
+export default EditableProjectForm;

@@ -17,6 +17,7 @@ export const ProjectCard = ({
   runningSince,
   onStartTimer,
   onStopTimer,
+  onEditClick,
 }) => {
   const [counter, setCounter] = useState(0);
   useEffect(() => {
@@ -55,7 +56,12 @@ export const ProjectCard = ({
           >
             <FontAwesomeIcon icon={faTrash} />
           </Button>
-          <Button variant="outline-warning" size="sm" disabled={status === 'Completed'}>
+          <Button
+            variant="outline-warning"
+            size="sm"
+            disabled={status === 'Completed'}
+            onClick={() => onEditClick(id)}
+          >
             <FontAwesomeIcon icon={faPencilSquare} />
           </Button>
         </Stack>
