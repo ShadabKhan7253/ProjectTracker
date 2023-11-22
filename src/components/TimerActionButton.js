@@ -2,9 +2,9 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 export const TimerActionButton = ({ id, status, runningSince, onStartTimer, onStopTimer }) => {
-  if (status === 'Completed') {
+  if (status === 'completed') {
     return (
-      <Button variant="outline-danger" size="sm" disabled>
+      <Button variant="outline-success" size="sm" disabled={status === 'completed'}>
         Start Timer
       </Button>
     );

@@ -27,7 +27,7 @@ export const ProjectCard = ({
     };
   }, [counter]);
   return (
-    <Card border={status === 'Completed' ? 'success' : 'warning'}>
+    <Card border={status === 'completed' ? 'success' : 'warning'}>
       <Card.Header>
         <Stack direction="horizontal">
           <h4 className="me-auto">{name} </h4>
@@ -44,7 +44,7 @@ export const ProjectCard = ({
         </Card.Text>
 
         <Stack direction="horizontal" gap={3} className="mt-4">
-          <Badge pill bg={status === 'Completed' ? 'success' : 'warning'} size="md">
+          <Badge pill bg={status === 'completed' ? 'success' : 'warning'} size="md">
             {status}
           </Badge>
           <Button
